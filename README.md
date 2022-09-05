@@ -1,5 +1,5 @@
 # RAED ME
-
+![screenshot](screenshot.jpg)
 ## Introduction
 
 FIRSTLY, this is a project ***only for learning using***.
