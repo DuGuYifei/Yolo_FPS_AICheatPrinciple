@@ -1,6 +1,7 @@
-import win32gui
-import win32process
-from pynput.mouse import Controller
+# import win32gui
+# import win32process
+# import pyautogui
+# from pynput.mouse import Controller
 import win32api
 import win32con
 from PIL import ImageGrab
@@ -16,8 +17,9 @@ from models.experimental import attempt_load
 pt_path = 'valorant-bot.pt'
 
 # used for detecting the hiding window, if use pynput or pyautogui directly, it can be glossed
-hd = []
-pid = 39408
+hwnd = 527818
+# hd = []
+# pid = 39408
 
 
 def run():
@@ -36,7 +38,7 @@ def run():
     model.half()
 
     open_helper = False
-    mouse = Controller()  # 鼠标对象
+    # mouse = Controller()  # 鼠标对象
 
     while True:
         # middle button of mouse control open and close
@@ -58,7 +60,7 @@ def run():
             img = img.half() if half else img.float()
             img /= 255  # 0 - 255 to 0.0 - 1.0
             if len(img.shape) == 3:
-                img = img[None]  # img = img.unsqueeze(0) 压缩数据维度
+                img = img[None]  # 压缩数据维度
 
             img = img.permute(0, 3, 1, 2)
             pred = model(img, augment=False, visualize=False)[0]
@@ -72,8 +74,6 @@ def run():
                     # Write results
                     for *xyxy, conf, cls in reversed(det):
                         aims.append(((xyxy[0] + xyxy[2]) / 2, (xyxy[3] - xyxy[1]) / 5 + xyxy[1]))
-
-                cv2.waitKey(1)
 
                 if len(aims):
                     min_dis = 100000
@@ -90,21 +90,24 @@ def run():
 
                     # mouse.move = (target_x - mid_screen_x, target_y - mid_screen_y)
                     # pyautogui.moveRel(target_x - mid_screen_x, target_y - mid_screen_y, duration=0.01)
-                    temp = win32api.MAKELONG(int(target_x), int(target_y))
-                    for hwnd in hd:
-                        mouse.position = (mid_screen_x, mid_screen_y)
-                        if win32api.SendMessage(hwnd, win32con.WM_MOUSEMOVE, 0, temp):  # 鼠标移动
-                            print(hwnd)
+                    temp = win32api.MAKELONG(target_x, target_y)
+                    # for hwnd in hd:
+                    # mouse.position = (mid_screen_x, mid_screen_y)
+                    # pyautogui.click(int(target_x), int(target_y))
+                    # win32api.SetCursor()
+                    win32api.SendMessage(hwnd, win32con.WM_MOUSEMOVE, 0, temp)
+                    # win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE | win32con.MOUSEEVENTF_MOVE, int(target_x * 65536 / 1920), int(target_y * 65536 / 1080), 0, 0);
 
 
 # used for detect window of game but not work for valorant. They hide window
-def foo(hwnd, mouse):
-    ttid, ppid = win32process.GetWindowThreadProcessId(hwnd)
-    if ppid == pid:
-        hd.append(hwnd)
-        print(hwnd)
+# def foo(hwnd, mouse):
+#     #ttid, ppid = win32process.GetWindowThreadProcessId(hwnd)
+#     if win32gui.GetWindowText(hwnd) == "VALORANT  ":
+#         hd.append(hwnd)
+#         print(hwnd)
 
 
 if __name__ == "__main__":
-    win32gui.EnumWindows(foo, 0)
+    #time.sleep(3)
+    #win32gui.EnumWindows(foo, 0)
     run()

@@ -4,6 +4,8 @@
 
 FIRSTLY, this is a project ***only for learning using***.
 
+It can only detect enemy not really moving mouse in game.
+
 The algorithm is using [yolov5](https://github.com/ultralytics/yolov5)
 
 The trained data I used mine firstly but result not good enough because label all imgs need a lot of time. So It comes from [Cool Guy Leaf48](https://github.com/Leaf48/YOLOv5-Models-For-Valorant).
@@ -31,6 +33,17 @@ python main.py
 * pid: the process Id of the game which can be seen in Task Manager.
 
 ## issue
-The test image is looks in blue because I didn't change the BRG to RGB channel. But that's not a big problem.
+1. The test image is looks in blue because I didn't change the BRG to RGB channel. 
 
-If want to get higher precision, you just need change the blue channel and red channel in the image matrix.
+But that's not a big problem.
+
+If want to get higher precision, just need change the blue channel and red channel in the image matrix.
+
+Of course, the lower precision is not a problem for me for learning yolo5.
+
+2. Simple mouse control function not work for Valorant.
+If really want to cheat, we need use better technology. For example, in arduino we can use mouse.move() to simulate real mouse moving.
+
+Or we need insert a data stream before system send msg to valorant.
+
+But of course, it maybe also the problem that I didn't find the real HWND of valorant. Because the window of Valorant named as "Unreal" valorant window.
