@@ -1,5 +1,7 @@
 # RAED ME
 ![screenshot](screenshot.jpg)
+
+[Video display](https://www.bilibili.com/video/BV1xY4y1M75D/)
 ## Introduction
 
 FIRSTLY, this is a project ***only for learning using***.
