@@ -1,5 +1,7 @@
 # RAED ME
 ![screenshot](screenshot.jpg)
+
+[Video display](https://www.bilibili.com/video/BV1xY4y1M75D/)
 ## Introduction
 
 FIRSTLY, this is a project ***only for learning using***.
@@ -33,7 +35,7 @@ python main.py
 * pid: the process Id of the game which can be seen in Task Manager.
 
 ## issue
-1. The test image is looks in blue because I didn't change the BRG to RGB channel. 
+1. The test image is looks in blue because I didn't change the BRG to RGB channel.  （**Fixed**）
 
 But that's not a big problem.
 
