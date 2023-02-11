@@ -1,6 +1,6 @@
 from pynput.mouse import Controller
 import win32api
-from PIL import ImageGrab
+from PIL import ImageGrab, Image
 import numpy as np
 import torch
 import cv2
@@ -20,8 +20,9 @@ def run():
     conf_thres = 0.4
     iou_thres = 0.05
     mouse = Controller()  # 鼠标对象
-
-    model = attempt_load('valorant-v12.pt', device=device, inplace=True, fuse=True)
+    # valorant-v12.pt
+    # pubg.pt
+    model = attempt_load('apex.pt', device=device, inplace=True, fuse=True)
 
     stride = max(int(model.stride.max()), 32)  # model stride
 
@@ -38,7 +39,9 @@ def run():
             if len(img.shape) == 3:
                 img = img[None]  # 压缩数据维度
 
+            # print(img)
             img = img.permute(0, 3, 1, 2)
+
             pred = model(img, augment=False, visualize=False)[0]
             pred = non_max_suppression(pred, conf_thres, iou_thres)
 
@@ -51,6 +54,7 @@ def run():
                     for *xyxy, conf, cls in reversed(det):
                         cv2.rectangle(img0, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), color, 3)
                         aims.append(((xyxy[0] + xyxy[2]) / 2, (xyxy[3] - xyxy[1]) / 5 + xyxy[1]))
+                img0 = cv2.cvtColor(img0, cv2.COLOR_RGB2BGR)
                 cv2.imshow("display", img0)
                 cv2.waitKey(1)
 
