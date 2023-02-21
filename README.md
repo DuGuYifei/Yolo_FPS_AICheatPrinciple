@@ -3,7 +3,7 @@
 
 [Video display](https://www.bilibili.com/video/BV1xY4y1M75D/)
 
-(In V2, fixed the blue screen, redudant train code, requirement.txt)
+(In branch V2, fixed the blue screen, redudant train code, requirement.txt)
 ## Introduction
 
 FIRSTLY, this is a project ***only for learning using***.
