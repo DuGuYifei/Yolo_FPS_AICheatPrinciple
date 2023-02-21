@@ -1,0 +1,11 @@
+# Usage: pip3 install -r requirements.txt
+
+--index-url https://download.pytorch.org/whl/cu117
+--extra-index-url=https://pypi.org/simple
+
+numpy
+pandas
+opencv-python
+Pillow
+torch
+torchvision
