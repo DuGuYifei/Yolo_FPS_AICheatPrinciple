@@ -1,4 +1,7 @@
 # RAED ME
+
+Newest in bracn v2.
+
 ![screenshot](screenshot.jpg)
 
 [Video display](https://www.bilibili.com/video/BV1xY4y1M75D/)
