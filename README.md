@@ -48,7 +48,9 @@ python main.py
 
 ~Of course, the lower precision is not a problem for me for learning yolo5.~
 
-3. Simple mouse control function not work for Valorant.
+3. ~The requirement.txt cannot download pytorch cuda version.~ (**Fixed**)
+
+4. Simple mouse control function not work for Valorant.
   
   If really want to cheat, we need use better technology. For example, in arduino we can use mouse.move() to simulate real mouse moving.
   
