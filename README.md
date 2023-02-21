@@ -1,6 +1,6 @@
 # RAED ME
 
-Newest in bracn v2.
+Newest in brach v2.
 
 ![screenshot](screenshot.jpg)
 
