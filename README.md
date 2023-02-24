@@ -1,6 +1,6 @@
 # RAED ME
 
-Newest in brach v2.
+Relatively newest public one is in brach v2. But it is still my old research. Newest has been hidden in private branch, because it becomes too strong after Yolo continue upgrade. Since it can be used in each shooting game, I hide and stop research it.
 
 ![screenshot](screenshot.jpg)
 
